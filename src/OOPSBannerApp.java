@@ -1,57 +1,53 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBannerApp {
 
-    static class CharacterPattern {
-        private final char ch;
-        private final String[] pattern;
+    static Map<Character, String[]> patterns = new HashMap<>();
 
-        CharacterPattern(char ch, String[] pattern) {
-            this.ch = ch;
-            this.pattern = pattern;
-        }
+    static {
+        patterns.put('O', new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        });
 
-        String[] getPattern() {
-            return pattern;
+        patterns.put('P', new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                " ***** ",
+                "*      ",
+                "*      ",
+                "*      "
+        });
+
+        patterns.put('S', new String[]{
+                " ***** ",
+                "*      ",
+                "*      ",
+                " ***** ",
+                "     *",
+                "     *",
+                " ***** "
+        });
+    }
+
+    static void render(String word) {
+        for (int row = 0; row < 7; row++) {
+            StringBuilder line = new StringBuilder();
+            for (char c : word.toCharArray()) {
+                line.append(patterns.get(c)[row]);
+            }
+            System.out.println(line);
         }
     }
 
-    static CharacterPattern O = new CharacterPattern('O', new String[]{
-            " ***** ",
-            "*     *",
-            "*     *",
-            "*     *",
-            "*     *",
-            "*     *",
-            " ***** "
-    });
-
-    static CharacterPattern P = new CharacterPattern('P', new String[]{
-            " ***** ",
-            "*     *",
-            "*     *",
-            " ***** ",
-            "*      ",
-            "*      ",
-            "*      "
-    });
-
-    static CharacterPattern S = new CharacterPattern('S', new String[]{
-            " ***** ",
-            "*      ",
-            "*      ",
-            " ***** ",
-            "     *",
-            "     *",
-            " ***** "
-    });
-
     public static void main(String[] args) {
-        for (int i = 0; i < 7; i++) {
-            System.out.println(
-                    O.getPattern()[i] +
-                            O.getPattern()[i] +
-                            P.getPattern()[i] +
-                            S.getPattern()[i]
-            );
-        }
+        render("OOPS");
     }
 }
