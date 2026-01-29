@@ -1,18 +1,48 @@
 public class OOPSBannerApp {
-    public static void main(String[] args) {
 
-        String[] banner = {
-                String.join("", " ***** ", " ***** ", " ***** ", " ***** "),
-                String.join("", "*     *", "*     *", "*     *", "*      "),
-                String.join("", "*     *", "*     *", "*     *", "*      "),
-                String.join("", "*     *", "*     *", " ***** ", " ***** "),
-                String.join("", "*     *", "*     *", "*      ", "     *"),
-                String.join("", "*     *", "*     *", "*      ", "     *"),
-                String.join("", " ***** ", " ***** ", "*      ", " ***** ")
+    static String[] getO() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
         };
+    }
 
-        for (String line : banner) {
-            System.out.println(line);
+    static String[] getP() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                " ***** ",
+                "*      ",
+                "*      ",
+                "*      "
+        };
+    }
+
+    static String[] getS() {
+        return new String[]{
+                " ***** ",
+                "*      ",
+                "*      ",
+                " ***** ",
+                "     *",
+                "     *",
+                " ***** "
+        };
+    }
+
+    public static void main(String[] args) {
+        String[] o = getO();
+        String[] p = getP();
+        String[] s = getS();
+
+        for (int i = 0; i < 7; i++) {
+            System.out.println(o[i] + o[i] + p[i] + s[i]);
         }
     }
 }
